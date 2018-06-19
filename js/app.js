@@ -39,9 +39,14 @@ function shuffle(array) {
 
 //Flip over a card when it is clicked on
 const deck = document.querySelectorAll('.card');
+const openCards = [];
 
 deck.forEach(function(card) {
  card.addEventListener('click', function () {
-   card.classList.add('open', 'show');
+   flipCard();
  });
 });
+
+function flipCard(){
+  card.classList.add('open', 'show');
+}
