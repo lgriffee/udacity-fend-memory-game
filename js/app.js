@@ -43,7 +43,7 @@ const openCards = [];
 
 deck.forEach(function(card) {
  card.addEventListener('click', function () {
-    if(!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
+    if(isFippable(card)){
       flipCard(card);
       addToOpenCardList(card);
       console.log(openCards);
@@ -59,4 +59,14 @@ function flipCard(card){
 //add card to open card array
 function addToOpenCardList(card){
   openCards.push(card);
+}
+
+//
+function isFippable(card){
+  if(!card.classList.contains('open') && !card.classList.contains('show') &&
+     !card.classList.contains('match') && openCards.length < 2){
+       return true;
+     }else{
+       return false;
+     }
 }
