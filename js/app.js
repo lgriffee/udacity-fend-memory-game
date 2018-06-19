@@ -37,16 +37,26 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-//Flip over a card when it is clicked on
+
 const deck = document.querySelectorAll('.card');
 const openCards = [];
 
 deck.forEach(function(card) {
  card.addEventListener('click', function () {
-   flipCard();
+    if(!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
+      flipCard(card);
+      addToOpenCardList(card);
+      console.log(openCards);
+    }
  });
 });
 
-function flipCard(){
+//visually flip over a card
+function flipCard(card){
   card.classList.add('open', 'show');
+}
+
+//add card to open card array
+function addToOpenCardList(card){
+  openCards.push(card);
 }
