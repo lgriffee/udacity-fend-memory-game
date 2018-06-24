@@ -1,14 +1,57 @@
-/*
- * Create a list that holds all of your cards
- */
+
+inializeGameboard();
+
+const allCards = document.querySelectorAll('.card');
+const openCards = [];
+
+allCards.forEach(function(card) {
+ card.addEventListener('click', function () {
+    if(isFippable(card)){
+      flipCard(card);
+      addToOpenCardList(card);
+      if (openCards.length == 2){
+
+      }
+    }
+ });
+});
 
 
 /*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+*
+* Functions
+*
+*/
+
+// Create cards, start timer, begin move count, keep track of ratings
+ function inializeGameboard(){
+   createCardsHTML();
+ }
+
+
+// Initiates randomly shuffles cards on the gameboard
+function createCardsHTML(){
+  const cards = ['fa-anchor', 'fa-anchor',
+                 'fa-bicycle', 'fa-bicycle',
+                 'fa-bolt', 'fa-bolt',
+                 'fa-bomb', 'fa-bomb',
+                 'fa-cube', 'fa-cube',
+                 'fa-diamond', 'fa-diamond',
+                 'fa-leaf', 'fa-leaf',
+                 'fa-paper-plane-o', 'fa-paper-plane-o'
+               ];
+  const cardsHTML = [];
+  const deck = document.querySelector('.deck');
+
+  cards.forEach(function(card){
+    cardsHTML.push('<li class="card"><i class="fa ' + card + '"></i></li>');
+  });
+
+  shuffle(cardsHTML);
+
+  deck.innerHTML = cardsHTML.join("");
+}
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -37,36 +80,26 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-
-const deck = document.querySelectorAll('.card');
-const openCards = [];
-
-deck.forEach(function(card) {
- card.addEventListener('click', function () {
-    if(isFippable(card)){
-      flipCard(card);
-      addToOpenCardList(card);
-      console.log(openCards);
-    }
- });
-});
-
-//visually flip over a card
+// Visually "open" (flip over) a card
 function flipCard(card){
   card.classList.add('open', 'show');
 }
 
-//add card to open card array
+// Keep track of which cards are "open" (flipped)
 function addToOpenCardList(card){
   openCards.push(card);
 }
 
-//
+// Determine if a card can be "opened" (flipped)
 function isFippable(card){
   if(!card.classList.contains('open') && !card.classList.contains('show') &&
-     !card.classList.contains('match') && openCards.length < 2){
+  !card.classList.contains('match') && openCards.length < 2){
        return true;
      }else{
        return false;
      }
 }
+
+function compareCards(cardA, cardB){}
+
+function win(){}
