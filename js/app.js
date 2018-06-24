@@ -6,14 +6,17 @@ let openCards = [];
 
 allCards.forEach(function(card) {
  card.addEventListener('click', function () {
+   console.log(openCards.length);
     if(isFippable(card)){
       openCard(card);
       addToOpenCardList(card);
       if (openCards.length == 2){
         if (isMatch(openCards[0], openCards[1])){
           createMatch(openCards[0], openCards[1]);
+          openCards = [];
         }else{
-          console.log("NO Match!");
+          closeCards(openCards[0], openCards[1]);
+          openCards = [];
         }
       }
     }
@@ -127,8 +130,10 @@ function createMatch(cardA, cardB){
 
 // "Close" card (flip it back over)
 function closeCards(cardA, cardB){
-  cardA.classlist.remove('open', 'show');
-  cardB.classlist.remove('open', 'show');
+  setTimeout(function(){
+    cardA.classList.remove('open', 'show');
+    cardB.classList.remove('open', 'show');
+  }, 1000);
 }
 
 
