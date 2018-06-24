@@ -4,6 +4,8 @@ let openCards = [];
 
 const moveCounter = document.querySelector('.moves');
 let moves = 0;
+let noMatchMoves = 0;
+let stars = 3;
 
 const restartBtn = document.querySelector('.restart');
 
@@ -56,6 +58,8 @@ function newGame(){
           }else{
             closeCards(openCards[0], openCards[1]);
             openCards = [];
+            noMatchMoves++;
+            updateStarStatus();
           }
         }
       }
@@ -63,9 +67,7 @@ function newGame(){
   });
 }
 
-// Reset all values
-// Create cards
-// Start timer, move count, & ratings
+// Reset all values, create cards, start timer/move count/ratings
  function newGameboard(){
    matches = 0;
    openCards = [];
@@ -189,4 +191,20 @@ function isWinner(){
 
 function createWinModal(){
   winModal.style.display = "block";
+}
+
+
+function updateStarStatus(){
+  if (noMatchMoves == 5){
+    removeStar();
+  }else if (noMatchMoves == 10){
+    removeStar();
+  }
+}
+
+function removeStar(){
+  const star = document.querySelector('.fa-star');
+  star.classList.remove('fa-star');
+  star.classList.add('fa-star-o');
+  stars--;
 }
