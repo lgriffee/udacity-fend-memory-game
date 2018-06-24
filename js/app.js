@@ -1,19 +1,23 @@
+const moveCounter = document.querySelector('.moves');
+let moves = 0;
 
 inializeGameboard();
 
 const allCards = document.querySelectorAll('.card');
 let openCards = [];
+let matches = 0;
 
 allCards.forEach(function(card) {
  card.addEventListener('click', function () {
-   console.log(openCards.length);
     if(isFippable(card)){
       openCard(card);
       addToOpenCardList(card);
       if (openCards.length == 2){
+        increaseMoveCounter();
         if (isMatch(openCards[0], openCards[1])){
           createMatch(openCards[0], openCards[1]);
           openCards = [];
+          matches++;
         }else{
           closeCards(openCards[0], openCards[1]);
           openCards = [];
@@ -33,6 +37,7 @@ allCards.forEach(function(card) {
 // Create cards, start timer, begin move count, keep track of ratings
  function inializeGameboard(){
    createCardsHTML();
+   inializeMoveCounter();
  }
 
 
@@ -55,7 +60,6 @@ function createCardsHTML(){
   });
 
   shuffle(cardsHTML);
-  console.log(cardsHTML);
 
   deck.innerHTML = cardsHTML.join("");
 }
@@ -134,6 +138,18 @@ function closeCards(cardA, cardB){
     cardA.classList.remove('open', 'show');
     cardB.classList.remove('open', 'show');
   }, 1000);
+}
+
+
+function inializeMoveCounter(){
+  moves = 0;
+  moveCounter.innerHTML = moves;
+}
+
+
+function increaseMoveCounter(){
+  moves++;
+  moveCounter.innerHTML = moves;
 }
 
 
