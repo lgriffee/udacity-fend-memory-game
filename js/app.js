@@ -1,34 +1,32 @@
+let deck = document.querySelector('.deck');
+let allCards;
+let openCards = [];
+
 const moveCounter = document.querySelector('.moves');
 let moves = 0;
 
-inializeGameboard();
+const restartBtn = document.querySelector('.restart');
 
-const allCards = document.querySelectorAll('.card');
-let openCards = [];
+const winModal = document.querySelector('.win-modal');
+const playAgainBtn = document.querySelector('.play-again');
+
 let matches = 0;
 
-allCards.forEach(function(card) {
- card.addEventListener('click', function () {
-    if(isFippable(card)){
-      openCard(card);
-      addToOpenCardList(card);
-      if (openCards.length == 2){
-        increaseMoveCounter();
-        if (isMatch(openCards[0], openCards[1])){
-          createMatch(openCards[0], openCards[1]);
-          openCards = [];
-          matches++;
-          if(isWinner()){
-            createWinModal();
-          }
-        }else{
-          closeCards(openCards[0], openCards[1]);
-          openCards = [];
-        }
-      }
-    }
- });
+
+
+newGame();
+
+
+playAgainBtn.addEventListener('click', function () {
+  newGame();
+  winModal.style.display = "none";
 });
+
+
+restartBtn.addEventListener('click', function () {
+  newGame();
+});
+
 
 
 /*
@@ -37,9 +35,43 @@ allCards.forEach(function(card) {
 *
 */
 
-// Create cards, start timer, begin move count, keep track of ratings
- function inializeGameboard(){
+function newGame(){
+
+  newGameboard();
+
+  allCards.forEach(function(card) {
+   card.addEventListener('click', function () {
+      if(isFippable(card)){
+        openCard(card);
+        addToOpenCardList(card);
+        if (openCards.length == 2){
+          increaseMoveCounter();
+          if (isMatch(openCards[0], openCards[1])){
+            createMatch(openCards[0], openCards[1]);
+            openCards = [];
+            matches++;
+            if(isWinner()){
+              createWinModal();
+            }
+          }else{
+            closeCards(openCards[0], openCards[1]);
+            openCards = [];
+          }
+        }
+      }
+   });
+  });
+}
+
+// Reset all values
+// Create cards
+// Start timer, move count, & ratings
+ function newGameboard(){
+   matches = 0;
+   openCards = [];
+   deck.innerHTML = ' ';
    createCardsHTML();
+   allCards = document.querySelectorAll('.card');
    inializeMoveCounter();
  }
 
@@ -56,7 +88,8 @@ function createCardsHTML(){
                  'fa-paper-plane-o', 'fa-paper-plane-o'
                ];
   const cardsHTML = [];
-  const deck = document.querySelector('.deck');
+  console.log(cardsHTML);
+  deck = document.querySelector('.deck');
 
   cards.forEach(function(card){
     cardsHTML.push('<li class="card"><i class="fa ' + card + '"></i></li>');
@@ -83,17 +116,6 @@ function shuffle(array) {
     return array;
 }
 
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
 
 // Visually "open" (flip over) a card
 function openCard(card){
@@ -164,7 +186,7 @@ function isWinner(){
   }
 }
 
+
 function createWinModal(){
-  //show modal here with final score
-  console.log("YOU WIN!");
+  winModal.style.display = "block";
 }
