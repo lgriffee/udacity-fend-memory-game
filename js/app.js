@@ -2,15 +2,19 @@
 inializeGameboard();
 
 const allCards = document.querySelectorAll('.card');
-const openCards = [];
+let openCards = [];
 
 allCards.forEach(function(card) {
  card.addEventListener('click', function () {
     if(isFippable(card)){
-      flipCard(card);
+      openCard(card);
       addToOpenCardList(card);
       if (openCards.length == 2){
-
+        if (isMatch(openCards[0], openCards[1])){
+          createMatch(openCards[0], openCards[1]);
+        }else{
+          console.log("NO Match!");
+        }
       }
     }
  });
@@ -48,6 +52,7 @@ function createCardsHTML(){
   });
 
   shuffle(cardsHTML);
+  console.log(cardsHTML);
 
   deck.innerHTML = cardsHTML.join("");
 }
@@ -81,14 +86,16 @@ function shuffle(array) {
  */
 
 // Visually "open" (flip over) a card
-function flipCard(card){
+function openCard(card){
   card.classList.add('open', 'show');
 }
+
 
 // Keep track of which cards are "open" (flipped)
 function addToOpenCardList(card){
   openCards.push(card);
 }
+
 
 // Determine if a card can be "opened" (flipped)
 function isFippable(card){
@@ -100,6 +107,29 @@ function isFippable(card){
      }
 }
 
-function compareCards(cardA, cardB){}
+
+// Determine if a cards are a match
+function isMatch(cardA, cardB){
+  if (cardA.innerHTML == cardB.innerHTML){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+
+// Create a match
+function createMatch(cardA, cardB){
+  cardA.classList.add('match');
+  cardB.classList.add('match');
+}
+
+
+// "Close" card (flip it back over)
+function closeCards(cardA, cardB){
+  cardA.classlist.remove('open', 'show');
+  cardB.classlist.remove('open', 'show');
+}
+
 
 function win(){}
