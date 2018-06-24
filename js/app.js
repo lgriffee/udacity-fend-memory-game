@@ -18,6 +18,9 @@ allCards.forEach(function(card) {
           createMatch(openCards[0], openCards[1]);
           openCards = [];
           matches++;
+          if(isWinner()){
+            createWinModal();
+          }
         }else{
           closeCards(openCards[0], openCards[1]);
           openCards = [];
@@ -153,4 +156,15 @@ function increaseMoveCounter(){
 }
 
 
-function win(){}
+function isWinner(){
+  if (matches == 8){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+function createWinModal(){
+  //show modal here with final score
+  console.log("YOU WIN!");
+}
