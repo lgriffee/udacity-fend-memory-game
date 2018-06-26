@@ -87,14 +87,17 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 50%;
     margin-bottom: 10px;
+    display: inline-flex;
+    justify-content: space-around;
 }
 
 .score-panel .stars {
     margin: 0;
     padding: 0;
-    display: inline-block;
+    align-self: flex-end;
+    /* display: inline-block; */
     margin: 0 5px 0 0;
 }
 
@@ -103,8 +106,22 @@ h1 {
     display: inline-block;
 }
 
+.score-panel .moves{
+    list-style: none;
+    align-self: flex-end;
+    /* display: inline-block; */
+}
+
+.score-panel .timer {
+    /* display: inline-block; */
+    align-self: flex-end;
+    cursor: pointer;
+    margin: 0;
+}
+
 .score-panel .restart {
-    float: right;
+    /* float: right; */
+    align-self: flex-end;
     cursor: pointer;
 }
 
@@ -130,7 +147,7 @@ h1 {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; 
+    width: 80%;
 }
 
 .play-again {

@@ -3,7 +3,7 @@ let allCards;
 let openCards = [];
 
 let clicks = 0;
-const moveCounter = document.querySelector('.moves');
+const moveCounter = document.querySelector('.moves-num');
 let moves = 0;
 let noMatchMoves = 0;
 let stars = 3;
