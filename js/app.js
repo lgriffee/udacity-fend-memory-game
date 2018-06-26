@@ -2,6 +2,7 @@ let deck = document.querySelector('.deck');
 let allCards;
 let openCards = [];
 
+let clicks = 0;
 const moveCounter = document.querySelector('.moves');
 let moves = 0;
 let noMatchMoves = 0;
@@ -14,10 +15,25 @@ const playAgainBtn = document.querySelector('.play-again');
 
 let matches = 0;
 
+let timerText = document.querySelector('.timer');
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let t;
+let formattedTime = '0';
+let totalGameTime = '0';
+
+
 
 
 newGame();
 
+deck.addEventListener('click', function () {
+  clicks++;
+  if (clicks == 1){
+    timer();
+  }
+});
 
 playAgainBtn.addEventListener('click', function () {
   newGame();
@@ -69,6 +85,10 @@ function newGame(){
 
 // Reset all values, create cards, start timer/move count/ratings
  function newGameboard(){
+   clicks = 0;
+   resetTimer();
+   noMatchMoves = 0;
+   // resetStars();
    matches = 0;
    openCards = [];
    deck.innerHTML = ' ';
@@ -182,6 +202,7 @@ function increaseMoveCounter(){
 
 function isWinner(){
   if (matches == 8){
+    stopTimer();
     return true;
   }else{
     return false;
@@ -207,4 +228,58 @@ function removeStar(){
   star.classList.remove('fa-star');
   star.classList.add('fa-star-o');
   stars--;
+}
+
+// function addStar(){
+//   const star = document.querySelector('.fa-star-o');
+//   star.classList.remove('fa-star-o');
+//   star.classList.add('fa-star');
+//   stars++;
+// }
+//
+// function resetStars(){
+//   const maxStars = 3;
+//   const starsNeeded = (maxStars - stars);
+//   for (let i = 0; i < starsNeeded; i++){
+//     addStar();
+//   }
+// }
+
+//Timer functions adapted from https://jsfiddle.net/Daniel_Hug/pvk6p/
+function timer() {
+    t = setTimeout(addOneSec, 1000);
+}
+
+function addOneSec(){
+  seconds++;
+   if (seconds >= 60) {
+       seconds = 0;
+       minutes++;
+       if (minutes >= 60) {
+           minutes = 0;
+           hours++;
+       }
+   }
+
+   formattedTime = (hours ? (hours > 9 ? hours : '0' + hours) : '00') + ':'
+   + (minutes ? (minutes > 9 ? minutes : '0' + minutes) : '00') + ':'
+   + (seconds > 9 ? seconds : '0' + seconds);
+
+   timerText.textContent = formattedTime
+
+   timer();
+}
+
+function stopTimer(){
+  clearTimeout(t);
+  totalGameTime = formattedTime;
+}
+
+function resetTimer(){
+  timerText.textContent = "00:00:00";
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
+  formattedTime = '0';
+  totalGameTime = '0';
 }
