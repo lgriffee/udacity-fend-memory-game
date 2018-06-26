@@ -88,7 +88,7 @@ function newGame(){
    clicks = 0;
    resetTimer();
    noMatchMoves = 0;
-   // resetStars();
+   resetStars();
    matches = 0;
    openCards = [];
    deck.innerHTML = ' ';
@@ -230,20 +230,20 @@ function removeStar(){
   stars--;
 }
 
-// function addStar(){
-//   const star = document.querySelector('.fa-star-o');
-//   star.classList.remove('fa-star-o');
-//   star.classList.add('fa-star');
-//   stars++;
-// }
-//
-// function resetStars(){
-//   const maxStars = 3;
-//   const starsNeeded = (maxStars - stars);
-//   for (let i = 0; i < starsNeeded; i++){
-//     addStar();
-//   }
-// }
+function addStar(){
+  const star = document.querySelector('.fa-star-o');
+  star.classList.remove('fa-star-o');
+  star.classList.add('fa-star');
+  stars++;
+}
+
+function resetStars(){
+  const maxStars = 3;
+  const starsNeeded = (maxStars - stars);
+  for (let i = 0; i < starsNeeded; i++){
+    addStar();
+  }
+}
 
 //Timer functions adapted from https://jsfiddle.net/Daniel_Hug/pvk6p/
 function timer() {
