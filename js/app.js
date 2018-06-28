@@ -245,7 +245,7 @@ function resetStars(){
   }
 }
 
-//Timer functions adapted from https://jsfiddle.net/Daniel_Hug/pvk6p/
+//Timer functions from https://jsfiddle.net/Daniel_Hug/pvk6p/
 function timer() {
     t = setTimeout(addOneSec, 1000);
 }
