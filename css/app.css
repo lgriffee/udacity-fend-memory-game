@@ -56,7 +56,7 @@ h1 {
 
 
 /*
- * PAGE CONTENT WRAPPER
+ * APP CONTENT WRAPPER
  */
 
 .container {
@@ -73,7 +73,7 @@ h1 {
 
 .deck {
     width: 346px;
-    min-height: 1288px;
+    min-height: 366px;
     background: linear-gradient(160deg, var(--board-bkg-top) 0%, var(--board-bkg-bottom) 100%);
     padding: 32px;
     border-radius: 10px;
@@ -86,8 +86,8 @@ h1 {
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    height: 60px;
+    width: 60px;
     background: var(--card-back);
     font-size: 0;
     color: var(--icons);
@@ -106,13 +106,13 @@ h1 {
 }
 
 .deck .card.show {
-    font-size: 33px;
+    font-size: 24px;
 }
 
 .deck .card.match {
     cursor: default;
     background: var(--match-correct);
-    font-size: 33px;
+    font-size: 24px;
 }
 
 
@@ -208,6 +208,19 @@ h1 {
       min-height: 680px;
       padding: 32px;
       margin: 0 0 3em;
+  }
+
+  .deck .card {
+      height: 125px;
+      width: 125px;
+  }
+
+  .deck .card.show {
+      font-size: 33px;
+  }
+
+  .deck .card.match {
+      font-size: 33px;
   }
 
   .score-panel {
