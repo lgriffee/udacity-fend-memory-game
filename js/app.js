@@ -42,7 +42,7 @@ playAgainBtn.addEventListener('click', function () {
 
 
 restartBtn.addEventListener('click', function () {
-  stopTimer(); 
+  stopTimer();
   newGame();
 });
 
@@ -178,13 +178,19 @@ function createMatch(cardA, cardB){
   cardB.classList.add('match');
 }
 
-
 // "Close" card (flip it back over)
 function closeCards(cardA, cardB){
   setTimeout(function(){
+    cardA.classList.add('no-match');
+    cardB.classList.add('no-match');
+  }, 300);
+
+  setTimeout(function(){
     cardA.classList.remove('open', 'show');
     cardB.classList.remove('open', 'show');
-  }, 1000);
+    cardA.classList.remove('no-match');
+    cardB.classList.remove('no-match');
+  }, 1200);
 }
 
 

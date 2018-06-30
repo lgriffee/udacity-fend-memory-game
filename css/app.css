@@ -18,7 +18,7 @@
   --deck-border: #fc18fb;
 
   --match-correct: #02ccba;
-  --match-wrong: #bbbbbb;
+  --match-wrong: #fd3345;
 
   --icons: #ffffff;
 
@@ -158,26 +158,75 @@ body {
     align-items: center;
     border: 3px solid var(--deck-border);
     box-shadow: 0 0 20px 0 var(--deck-shadow);
+    -ms-transform: rotateY(-180deg); /* IE 9 */
+    -webkit-transform: rotateY(-180deg); /* Safari */
+    transform: rotateY(-180deg);
 }
 
 .deck .card.open {
-    transform: rotateY(0);
+    -ms-transform: rotateY(0deg); /* IE 9 */
+    -webkit-transform: rotateY(0deg); /* Safari */
+    transform: rotateY(0deg);
+    transition: .5s;
     background: var(--card-front);
     border: 3px solid var(--card-front);
     box-shadow: 0 0 20px 0 var(--card-front);
     cursor: default;
 }
 
+
 .deck .card.show {
     font-size: 24px;
 }
 
 .deck .card.match {
+    animation: bounce .4s;
     cursor: default;
     background: var(--match-correct);
     border: 3px solid var(--match-correct);
     box-shadow: 0 0 20px 0 var(--match-correct);
     font-size: 24px;
+}
+
+@keyframes bounce {
+  0%, 50%, 100% {
+    transform: scaleX(1);
+    transform: scaleY(1);
+  }
+
+  25% {
+    transform: scaleX(1.25);
+    transform: scaleY(0.8);
+  }
+
+  75% {
+    transform: scaleX(0.8);
+    transform: scaleY(1.25);
+  }
+}
+
+.deck .card.no-match {
+    animation: shake .4s;
+    cursor: default;
+    background: var(--match-wrong);
+    border: 3px solid var(--match-wrong);
+    box-shadow: 0 0 20px 0 var(--match-wrong);
+    font-size: 24px;
+}
+
+@keyframes shake {
+
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  33% {
+    transform: translate3d(-6px, 0, 0);
+  }
+
+  66% {
+    transform: translate3d(6px, 0, 0);
+  }
 }
 
 
