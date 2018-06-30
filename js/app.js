@@ -145,7 +145,7 @@ function createCardsHTML(){
     cardsHTML.push('<li class="card"><i class="fa ' + card + '"></i></li>');
   });
   shuffle(cardsHTML);
-  deck.innerHTML = cardsHTML.join("");
+  deck.innerHTML = cardsHTML.join('');
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -288,7 +288,7 @@ function stopTimer(){
 }
 
 function resetTimer(){
-  timerText.textContent = "00:00:00";
+  timerText.textContent = '00:00:00';
   seconds = 0;
   minutes = 0;
   hours = 0;
@@ -304,7 +304,7 @@ function createWinModal(){
   getResultTime();
   getResultMoves();
   getResultStars();
-  winModal.style.display = "block";
+  winModal.style.display = 'block';
 }
 
 // Get the total time it took the user to play the game
