@@ -42,6 +42,7 @@ playAgainBtn.addEventListener('click', function () {
 
 
 restartBtn.addEventListener('click', function () {
+  stopTimer(); 
   newGame();
 });
 
