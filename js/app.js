@@ -29,10 +29,10 @@ let totalGameTime = '0';
 newGame();
 
 deck.addEventListener('click', function () {
-  clicks++;
-  if (clicks == 1){
-    timer();
-  }
+    clicks++;
+    if (clicks == 1){
+      timer();
+    }
 });
 
 playAgainBtn.addEventListener('click', function () {
@@ -110,7 +110,6 @@ function createCardsHTML(){
                  'fa-paper-plane-o', 'fa-paper-plane-o'
                ];
   const cardsHTML = [];
-  console.log(cardsHTML);
   deck = document.querySelector('.deck');
 
   cards.forEach(function(card){
@@ -211,6 +210,9 @@ function isWinner(){
 
 
 function createWinModal(){
+  getResultTime();
+  getResultMoves();
+  getResultStars();
   winModal.style.display = "block";
 }
 
@@ -272,7 +274,7 @@ function addOneSec(){
 
 function stopTimer(){
   clearTimeout(t);
-  totalGameTime = formattedTime;
+  totalGameTime = timerText.textContent;
 }
 
 function resetTimer(){
@@ -282,4 +284,22 @@ function resetTimer(){
   hours = 0;
   formattedTime = '0';
   totalGameTime = '0';
+}
+
+function getResultTime(){
+  let resultTime = document.querySelector('.timer-result');
+  resultTime.textContent = timerText.textContent;
+}
+
+function getResultMoves(){
+  let resultMoves = document.querySelector('.moves-result-num');
+  resultMoves.textContent  = moveCounter.textContent;
+}
+
+function getResultStars(){
+  let resultStars = document.querySelector('.stars-result');
+  let stars = document.querySelector('.stars');
+  console.log(stars.innerHTML);
+  console.log(resultStars.innerHTML);
+  resultStars.innerHTML  = stars.innerHTML;
 }
