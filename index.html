@@ -1,64 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Matching Memory Game</title>
-    <meta name="description" content="Matching Memory Game">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <link rel="stylesheet" href="css/app.css">
+  <meta charset="utf-8">
+  <title>Matching Memory Game</title>
+  <meta name="description" content="Matching Memory Game">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+  <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-
-    <div class="container">
-        <header>
-            <img src="./img/game_title.png" alt="Cosmic Match!" class="game-title">
-        </header>
-
-        <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
-
-          <span class="moves">
-            <span class="moves-num">3</span> Moves
+  <div class="container">
+    <header>
+      <img src="./img/game_title.png" alt="Cosmic Match!" class="game-title">
+    </header>
+    <section class="score-panel">
+      <ul class="stars">
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+      </ul>
+      <span class="moves">
+        <span class="moves-num">3</span> Moves
+      </span>
+      <p class="timer"><time>00:00:00</time></p>
+      <div class="restart">
+        <i class="fa fa-repeat"></i>
+      </div>
+    </section>
+    <section class="card-grid">
+      <ul class="deck"></ul>
+    </section>
+    <section class="modal">
+      <div class="win-modal">
+        <div class="win-modal-content">
+          <img src="./img/win_modal_title.png" alt="You Win!" class="win-modal-title">
+          <p class="timer-result"><time>00:00:00</time></p>
+          <span class="moves-result">
+            <span class="moves-result-num">3</span> Moves
           </span>
-
-
-          <p class="timer"><time>00:00:00</time></p>
-
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
-        </section>
-
-        <ul class="deck"></ul>
-
-        <section class="modal">
-          <div class="win-modal">
-            <div class="win-modal-content">
-              <img src="./img/win_modal_title.png" alt="You Win!" class="win-modal-title">
-
-              <p class="timer-result"><time>00:00:00</time></p>
-
-              <span class="moves-result">
-                <span class="moves-result-num">3</span> Moves
-              </span>
-
-              <ul class="stars-result">
-            	</ul>
-
-              <button class="play-again" type="button">Play Again</button>
-            </div>
-          </div>
-        </section>
-
-    </div>
-
-    <script src="js/app.js"></script>
+          <ul class="stars-result"></ul>
+          <button class="play-again" type="button">Play Again</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="js/app.js"></script>
 </body>
 </html>

@@ -40,44 +40,45 @@
 */
 
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background: var(--main-bkg) url(../img/retro_gradient.png);
-    background-size: cover;
-    font-family: 'Coda', cursive;
+  background: var(--main-bkg) url(../img/retro_gradient.png);
+  background-size: cover;
+  font-family: 'Coda', cursive;
 }
 
 
 /*
- * APP CONTENT WRAPPER
- */
+* APP CONTENT WRAPPER
+*/
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
+
 /*
- * GAMEBOARD
- */
+* GAMEBOARD
+*/
 
 .game-title {
   width: 346px;
@@ -86,106 +87,103 @@ body {
 
 
 /*
- * SCORE PANNEL
- */
+* SCORE PANNEL
+*/
 
 .score-panel {
-    text-align: left;
-    width: 346px;;
-    margin-bottom: 10px;
-    display: inline-flex;
-    justify-content: space-around;
-    color: var(--score-pannel);
+  text-align: left;
+  width: 346px;;
+  margin-bottom: 10px;
+  display: inline-flex;
+  justify-content: space-around;
+  color: var(--score-pannel);
 }
 
 .score-panel .stars {
-    margin: 0;
-    padding: 0;
-    align-self: flex-end;
-    margin: 0 5px 0 0;
+  margin: 0;
+  padding: 0;
+  align-self: flex-end;
+  margin: 0 5px 0 0;
 }
 
 .score-panel .stars li {
-    list-style: none;
-    display: inline-block;
+  list-style: none;
+  display: inline-block;
 }
 
 .score-panel .moves{
-    list-style: none;
-    align-self: flex-end;
+  list-style: none;
+  align-self: flex-end;
 }
 
 .score-panel .timer {
-    align-self: flex-end;
-    margin: 0;
+  align-self: flex-end;
+  margin: 0;
 }
 
-
 .score-panel .restart {
-    align-self: flex-end;
-    cursor: pointer;
+  align-self: flex-end;
+  cursor: pointer;
 }
 
 
 /*
- * DECK
- */
+* DECK
+*/
 
 .deck {
-    width: 346px;
-    min-height: 366px;
-    padding: 32px;
-    border-radius: 10px;
-    border: 5px solid var(--deck-border);
-    box-shadow: 0 0 30px 0 var(--deck-shadow);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 3em;
+  width: 346px;
+  min-height: 366px;
+  padding: 32px;
+  border-radius: 10px;
+  border: 5px solid var(--deck-border);
+  box-shadow: 0 0 30px 0 var(--deck-shadow);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 3em;
 }
 
 .deck .card {
-    height: 60px;
-    width: 60px;
-    background: var(--card-back);
-    font-size: 0;
-    color: var(--icons);
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid var(--deck-border);
-    box-shadow: 0 0 20px 0 var(--deck-shadow);
-    -ms-transform: rotateY(-180deg); /* IE 9 */
-    -webkit-transform: rotateY(-180deg); /* Safari */
-    transform: rotateY(-180deg);
+  height: 60px;
+  width: 60px;
+  background: var(--card-back);
+  font-size: 0;
+  color: var(--icons);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--deck-border);
+  box-shadow: 0 0 20px 0 var(--deck-shadow);
+  -ms-transform: rotateY(-180deg); /* IE 9 */
+  -webkit-transform: rotateY(-180deg); /* Safari */
+  transform: rotateY(-180deg);
 }
 
 .deck .card.open {
-    -ms-transform: rotateY(0deg); /* IE 9 */
-    -webkit-transform: rotateY(0deg); /* Safari */
-    transform: rotateY(0deg);
-    transition: .5s;
-    background: var(--card-front);
-    border: 3px solid var(--card-front);
-    box-shadow: 0 0 20px 0 var(--card-front);
-    cursor: default;
+  -ms-transform: rotateY(0deg); /* IE 9 */
+  -webkit-transform: rotateY(0deg); /* Safari */
+  transform: rotateY(0deg);
+  transition: .5s;
+  background: var(--card-front);
+  border: 3px solid var(--card-front);
+  box-shadow: 0 0 20px 0 var(--card-front);
+  cursor: default;
 }
 
-
 .deck .card.show {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .deck .card.match {
-    animation: bounce .4s;
-    cursor: default;
-    background: var(--match-correct);
-    border: 3px solid var(--match-correct);
-    box-shadow: 0 0 20px 0 var(--match-correct);
-    font-size: 24px;
+  animation: bounce .4s;
+  cursor: default;
+  background: var(--match-correct);
+  border: 3px solid var(--match-correct);
+  box-shadow: 0 0 20px 0 var(--match-correct);
 }
 
 @keyframes bounce {
@@ -206,12 +204,12 @@ body {
 }
 
 .deck .card.no-match {
-    animation: shake .4s;
-    cursor: default;
-    background: var(--match-wrong);
-    border: 3px solid var(--match-wrong);
-    box-shadow: 0 0 20px 0 var(--match-wrong);
-    font-size: 24px;
+  animation: shake .4s;
+  cursor: default;
+  background: var(--match-wrong);
+  border: 3px solid var(--match-wrong);
+  box-shadow: 0 0 20px 0 var(--match-wrong);
+  font-size: 24px;
 }
 
 @keyframes shake {
@@ -231,44 +229,44 @@ body {
 
 
 /*
- * WIN MODAL
- */
+* WIN MODAL
+*/
 
 .win-modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: var(--modal-overlay);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--modal-overlay);
 }
 
 .win-modal-content {
-    margin: 15% auto;
-    padding: 32px;
-    width: 240px;
-    background-color: var(--modal-bkg);
-    color: var(--modal-text);
-    border-radius: 10px;
-    border: 5px solid var(--deck-border);
-    box-shadow: 0 0 30px 0 var(--deck-shadow);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
+  margin: 15% auto;
+  padding: 32px;
+  width: 240px;
+  background-color: var(--modal-bkg);
+  color: var(--modal-text);
+  border-radius: 10px;
+  border: 5px solid var(--deck-border);
+  box-shadow: 0 0 30px 0 var(--deck-shadow);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
 }
 
 .win-modal-content > * {
-    width: 100%;
-    margin: 0 0 16px 0;
+  width: 100%;
+  margin: 0 0 16px 0;
 }
 
 .win-modal-title {
-    margin: 0 0 24px 0;
+  margin: 0 0 24px 0;
 }
 
 .timer-result{
@@ -282,35 +280,35 @@ body {
 }
 
 .win-modal-content .stars-result {
-    padding: 0;
-    text-align: center;
+  padding: 0;
+  text-align: center;
 }
 
 .win-modal-content .stars-result li {
-    list-style: none;
-    display: inline-block;
-    padding: 0 2px;
-    font-size: 30px;
+  list-style: none;
+  display: inline-block;
+  padding: 0 2px;
+  font-size: 30px;
 }
 
 .play-again {
-    height: 50px;
-    background-color: var(--modal-button);
-    border: 5px solid var(--modal-button);
-    box-shadow: 0 0 30px 0 var(--modal-button);
-    color: var(--modal-button-text);
-    border-radius: 10px;
-    font-size: 16px;
-    font-family: 'Coda', cursive;
-    margin: 8px 0 0 0;
+  height: 50px;
+  background-color: var(--modal-button);
+  border: 5px solid var(--modal-button);
+  box-shadow: 0 0 30px 0 var(--modal-button);
+  color: var(--modal-button-text);
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: 'Coda', cursive;
+  margin: 8px 0 0 0;
 }
 
 .play-again:hover,
 .play-again:focus {
-    background-color: var(--modal-button-hover);
-    border: 5px solid var(--modal-button-hover);
-    box-shadow: 0 0 30px 0 var(--modal-button-hover);
-    cursor: pointer;
+  background-color: var(--modal-button-hover);
+  border: 5px solid var(--modal-button-hover);
+  box-shadow: 0 0 30px 0 var(--modal-button-hover);
+  cursor: pointer;
 }
 
 
@@ -328,29 +326,23 @@ body {
   }
 
   .deck {
-      width: 660px;
-      min-height: 680px;
-      padding: 32px;
-      margin: 0 0 3em;
+    width: 660px;
+    min-height: 680px;
+    padding: 32px;
+    margin: 0 0 3em;
   }
 
   .deck .card {
-      height: 125px;
-      width: 125px;
+    height: 125px;
+    width: 125px;
   }
 
   .deck .card.show {
-      font-size: 33px;
-  }
-
-  .deck .card.match {
-      font-size: 33px;
+    font-size: 33px;
   }
 
   .score-panel {
-      text-align: left;
-      width: 660px;
+    text-align: left;
+    width: 660px;
   }
-
-
 }
